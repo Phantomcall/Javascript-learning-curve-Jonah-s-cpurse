@@ -1,0 +1,10 @@
+## ES stands for ECMAScript
+A value is basically a piece of data which is the most fundamental unit of information that we have in programming
+
+E.g:
+`Jonas` is a value
+camel case is used when writing a variable with multiple words, where the first word is written in lowercase and the other words have the initial letter of that word start with uppercase
+
+There are rules that should not be broken when writing variables 
+E.g:
+<let 3years = 3;>
