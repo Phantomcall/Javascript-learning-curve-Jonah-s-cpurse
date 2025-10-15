@@ -168,7 +168,6 @@ if (markHigherBMI) {
 } else {
   console.log(`John's BMI ${BMIJohn.toFixed(1)} is higher than Mark's ${BMIMark.toFixed(1)}`);
 }
-*/
 
 // type convertion
 const inputYear = `1991`;
@@ -183,5 +182,53 @@ console.log(`I am ` + 23 + ` years old`);
 console.log(`23` - `10` - 3);
 console.log(`23` / `2`);
 
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean(`Jonas`));
+console.log(Boolean({}));
+console.log(Boolean(``));
 
+const money = 100;
+
+if (money) {
+  console.log(`Don't spend it all ;)`);
+} else {
+  console.log(`You should get a job (-_-)`);
+}
+
+let height = 0;
+
+if (height) {
+  console.log(`Height is defined`);
+} else {
+  console.log(`Height is undefined`);
+}
+
+const age = `18`;
+
+if (age === 18) console.log(`You just became an adult`);
+
+if (age == 18) console.log(`You just became an adult :D (loose)`);
+
+const favNumber = Number(prompt(`What is your favorite Number?`));
+
+console.log(favNumber);
+console.log(typeof favNumber);
+
+if (favNumber === 23) {
+  console.log(`Cool 23 is an amazing number`);
+} else if (favNumber === 7) {
+  console.log(`7 is also a cool number`);
+} else if (favNumber === 9) {
+  console.log(`9 is also a cool number`);
+} else {
+  console.log(`Number is not 23 or 7 or 9`);
+}
+
+if (favNumber !== 23) {
+  console.log(`This is not 23`);
+} else {
+  console.log(`Yay! 23`);
+}
+*/
 
