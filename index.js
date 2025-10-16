@@ -230,5 +230,124 @@ if (favNumber !== 23) {
 } else {
   console.log(`Yay! 23`);
 }
+
+const hasDriversLicense = true;
+const hasGoodVision = true;
+
+console.log(hasDriversLicense || hasGoodVision);
+
+console.log(!hasDriversLicense);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+if (shouldDrive) {
+  console.log(`Sarah is able to drive`);
+} else {
+  console.log(`Someone else should drive`);
+}
+
+const isTired = false;
+
+console.log(hasDriversLicense || hasGoodVision || isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log(`Sarah is able to drive`);
+} else {
+  console.log(`Someone else should drive`);
+}
+
+// TASK to determien the average score of both teams and then decide the winner:
+
+let dolphinsAverage = (96 + 108 + 89) / 3;
+
+let koalasAverage = (88 + 91 + 110) / 3;
+
+console.log(dolphinsAverage, koalasAverage);
+
+if (dolphinsAverage > koalasAverage) {
+  console.log(`Dolphins Win!`);
+} else if (koalasAverage > dolphinsAverage) {
+  console.log(`Koalas Win!`);
+} else if (dolphinsAverage === koalasAverage) {
+  console.log(`It's a tie`);
+}
+
+// BONUS 1:
+
+let dolphinsAverageB1 = (97 + 112 + 101) / 3;
+let koalasAverageB1 = (109 + 95 + 123) / 3;
+
+console.log(dolphinsAverageB1, koalasAverageB1);
+
+let minimumScoreReq = 100;
+
+if (koalasAverageB1 > dolphinsAverageB1 && koalasAverageB1 > minimumScoreReq) {
+  console.log(`Koalas WIn!`);
+} else if (
+  dolphinsAverageB1 > koalasAverageB1 &&
+  dolphinsAverageB1 > minimumScoreReq
+) {
+  console.log(`Dolphins WIn!`);
+} else if (
+  koalasAverageB1 === dolphinsAverageB1 &&
+  koalasAverageB1 > minimumScoreReq &&
+  dolphinsAverageB1 > minimumScoreReq
+) {
+  console.log(`Its a tie`);
+}
+
+// BONUS 2:
+let dolphinsAverageB2 = (97 + 112 + 101) / 3;
+let koalasAverageB2 = (109 + 95 + 106) / 3;
+
+console.log(dolphinsAverageB2, koalasAverageB2);
+
+if (
+  dolphinsAverageB2 > koalasAverageB2 &&
+  dolphinsAverageB2 > minimumScoreReq
+) {
+  console.log(`Dolphins Win!`);
+} else if (
+  koalasAverageB2 > dolphinsAverageB2 &&
+  koalasAverageB2 > minimumScoreReq
+) {
+  console.log(`Koalas Win`);
+} else if (
+  dolphinsAverageB2 === koalasAverageB2 &&
+  dolphinsAverageB2 > minimumScoreReq
+) {
+  console.log(`It's a tie`);
+} else if (
+  koalasAverageB2 === dolphinsAverageB2 &&
+  koalasAverageB2 > minimumScoreReq
+) {
+  console.log(`It's a tie`);
+} else {
+  console.log(`No one wins, both teams suck`);
+}
 */
 
+const day = `Thursday`;
+
+switch (day) {
+  case `Monday`: // day === `Monday'
+    console.log(`I plan my course structure`);
+    console.log(`Go to coding meetup`);
+    break;
+  case `Tuesday`:
+    console.log(`Prepare theory videos`);
+    break;
+  case `Wednesday`:
+  case `Thursday`:
+    console.log(`Writing code examples`);
+    break;
+  case `Friday`:
+    console.log(`Record ideos`);
+    break;
+  case `Saturday`:
+  case `Sunday`:
+    console.log(`Enjoy the weekend`);
+    break;
+  default:
+    console.log(`Not a valid day`);
+}
