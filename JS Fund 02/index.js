@@ -1,4 +1,4 @@
-/*let js = `amazing`;
+let js = `amazing`;
 
 console.log(40 + 8 + 23 - 10);
 
@@ -424,4 +424,3 @@ bill >= 50 || bill <= 300
   : console.log(
       `The bill was ${bill}, the tip was ${tip} and the final bill was ${finalBill}`
     );
-    */
