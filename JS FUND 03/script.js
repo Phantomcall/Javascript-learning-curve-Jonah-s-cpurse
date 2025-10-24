@@ -216,3 +216,58 @@ if (friends.includes(`Peter`)) {
   console.log(`You have no friedns, loser!!!`);
 }
 */
+
+// TASK:
+
+/*function checker(day) {
+  day.toLocaleLowerCase() == "monday"
+    ? console.log(`Today is ${day} and todays date is ${date}`)
+    : day == "friday"
+    ? console.log(`Today is ${day} and todays date is ${date}`)
+    : day == "saturday" || day == "sunday"
+    ? console.log(`Today is ${day} and todays date is ${date}`)
+    : console.log(`It's the week day`);
+}
+
+let time = new Date();
+let date = `${time.getHours()}/${time.getMinutes()}/${time.getSeconds()} ${time.getDate()}/${
+  time.getMonth() + 1
+}/${time.getFullYear()}`;
+let month = "october";
+let day = "friday";
+
+switch (month.toLocaleLowerCase()) {
+  case "january":
+    checker("monday");
+    break;
+  case "february":
+    checker("monday");
+    break;
+  case "october":
+    checker("friday");
+    break;
+  default:
+    console.log(`Hope you are having a great ${month}`);
+}*/
+
+function calcTip(bill) {
+  let tipPercent =
+    bill >= 50 && bill <= 300 ? 15 : bill <= 50 || bill >= 300 ? 20 : null;
+  let tip = (tipPercent / 100) * bill;
+
+  let finalBill = Number(bill) + Number(tip);
+
+  if (bill >= 50 && bill <= 300) {
+    console.log(
+      `The bill is $${bill} and the tip is $${tip} so the total bill is $${finalBill}`
+    );
+  } else if (bill <= 50 || bill >= 300) {
+    console.log(
+      `The bill is $${bill} and the tip is $${tip} so the total bill is $${finalBill}`
+    );
+  }
+}
+
+const bill = [125, 555, 44];
+
+const tips = [calcTip(bill[0]), calcTip(bill[1]), calcTip(bill[2])];
