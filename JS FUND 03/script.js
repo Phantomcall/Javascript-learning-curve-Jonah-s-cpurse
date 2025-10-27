@@ -1,6 +1,6 @@
 "use strict"; // THE USE OF STRICT MODE
-
-/*let hasDriversLicense = false;
+/*
+let hasDriversLicense = false;
 const passTest = true;
 
 if (passTest) hasDriversLicense = true;
@@ -215,11 +215,10 @@ if (friends.includes(`Peter`)) {
 } else {
   console.log(`You have no friedns, loser!!!`);
 }
-*/
 
 // TASK:
 
-/*function checker(day) {
+function checker(day) {
   day.toLocaleLowerCase() == "monday"
     ? console.log(`Today is ${day} and todays date is ${date}`)
     : day == "friday"
@@ -229,49 +228,188 @@ if (friends.includes(`Peter`)) {
     : console.log(`It's the week day`);
 }
 
-let time = new Date();
-let date = `${time.getHours()}/${time.getMinutes()}/${time.getSeconds()} ${time.getDate()}/${
-  time.getMonth() + 1
-}/${time.getFullYear()}`;
-let month = "october";
-let day = "friday";
+//let time = new Date();
+//let date = `${time.getHours()}/${time.getMinutes()}/${time.getSeconds()} ${time.getDate()}/${
+//  time.getMonth() + 1
+//}/${time.getFullYear()}`;
+//let month = "october";
+//let day = "friday";
 
-switch (month.toLocaleLowerCase()) {
-  case "january":
-    checker("monday");
-    break;
-  case "february":
-    checker("monday");
-    break;
-  case "october":
-    checker("friday");
-    break;
-  default:
-    console.log(`Hope you are having a great ${month}`);
-}*/
+//switch (month.toLocaleLowerCase()) {
+//  case "january":
+//    checker("monday");
+//    break;
+//  case "february":
+//    checker("monday");
+//    break;
+//  case "october":
+//    checker("friday");
+//    break;
+//  default:
+//    console.log(`Hope you are having a great ${month}`);
+//}
 
-function calcTip(bill) {
-  let tipPercent =
-    bill >= 50 && bill <= 300 ? 15 : bill <= 50 || bill >= 300 ? 20 : null;
-  let tip = (tipPercent / 100) * bill;
+//function calcTip(bill) {
+//  let tipPercent =
+//    bill >= 50 && bill <= 300 ? 15 : bill <= 50 || bill >= 300 ? 20 : null;
+//  let tip = (tipPercent / 100) * bill;
 
-  let finalBill = Number(bill) + Number(tip);
+//  let finalBill = Number(bill) + Number(tip);
 
-  if (bill >= 50 && bill <= 300) {
-    console.log(
-      `The bill is $${bill} and the tip is $${tip} so the total bill is $${finalBill}`
-    );
-  } else if (bill <= 50 || bill >= 300) {
-    console.log(
-      `The bill is $${bill} and the tip is $${tip} so the total bill is $${finalBill}`
-    );
-  }
+//  if (bill >= 50 && bill <= 300) {
+//    console.log(
+//      `The bill is $${bill} and the tip is $${tip} so the total bill is $${finalBill}`
+//    );
+//  } else if (bill <= 50 || bill >= 300) {
+//    console.log(
+//      `The bill is $${bill} and the tip is $${tip} so the total bill is $${finalBill}`
+//    );
+//  }
+//}
+
+//const bill = [125, 555, 44];
+
+//const tips = [calcTip(bill[0]), calcTip(bill[1]), calcTip(bill[2])];
+
+//const total = [bill[0] + bill[1] + bill[2]];
+//console.log(total);
+
+// OBJECTS
+//const jonasArray = [
+//  `Jonas`,
+//  `Schmedtmann`,
+//  2037 - 1991,
+//  `Teacher`,
+//  [`Michael`, `Peter`, `Steven`],
+//];
+
+//const jonas = {
+//  firstName: `Jonas`,
+//  lastName: `Schmedtmann`,
+//  age: 2037 - 1991,
+//  job: `Teacher`,
+//  friends: [`Michael`, `Peter`, `Steven`],
+//};
+
+//console.log(jonas);
+
+//console.log(jonas.lastName);
+//console.log(jonas[`lastName`]);
+
+//const namekey = `Name`;
+//console.log(jonas[`first` + namekey]);
+//console.log(jonas[`last` + namekey]);
+
+//const interestedIn = prompt(
+//  `What do you want to KNow about jonas, choose between firstName, lastNmae, age, job and friends`
+//);
+//console.log(jonas[interestedIn]);
+
+//if (jonas[interestedIn]) {
+//  console.log(jonas[interestedIn]);
+//} else {
+//  console.log(
+//    `Not a real value, choose between firstName, lastNmae, age, job and friends`
+//  );
+//}
+
+//jonas.location = `Portugal`;
+//jonas[`twitter`] = `@jonasschmedtmann;`;
+
+//console.log(jonas);
+
+// challenge
+// "Jonas has three friends and his best frined is called Michael"
+
+//console.log(
+//  `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}`
+//);
+//jonas.firstName +
+//  " has " +
+//  jonas.friends.length +
+//  ` friends` +
+//  ` and his best friend is called ` +
+//  jonas.friends[0];
+
+const jonas = {
+  firstName: `Jonas`,
+  lastName: `Schmedtmann`,
+  birthYear: 1991,
+  job: `Teacher`,
+  friends: [`Michael`, `Peter`, `Steven`],
+  hasDriversLIcense: true,
+
+  //calcAge: function (birthYear) {
+  //  return 2037 - birthYear;
+  //}
+
+  //calcAge: function () {
+  //  //console.log(this);
+  //  return 2037 - this.birthYear;
+  //},
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()} year old ${
+      this.job
+    } and he has ${this.hasDriversLIcense ? "a" : "no"} driver's license.`;
+  },
+};
+
+console.log(jonas.calcAge());
+console.log(jonas.friends);
+console.log(jonas.age);
+
+console.log(jonas[`calcAge`](1991));
+
+// Challenge
+// "JOnas ia a 46 year old teacher and he has a driver's license"
+
+console.log(
+  `${jonas.firstName} is a ${jonas.age} year old ${jonas.job} and he has ${jonas.hasDriversLIcense ? "a" : "no"} driver's license.`
+);
+
+console.log(jonas.getSummary());
+*/
+
+// Task to calculate and compare the BMI's of two people
+
+const mark = {
+  fullName: `Mark Miller`,
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+
+const John = {
+  fullName: `John Smith`,
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+
+mark.calcBMI();
+console.log(mark.bmi);
+
+John.calcBMI();
+console.log(John.bmi);
+
+if (mark.bmi > John.bmi) {
+  console.log(
+    `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${John.fullName}'s BMI (${John.bmi})`
+  );
+} else if (John.bmi > mark.bmi) {
+  console.log(
+    `${John.fullName}'s BMI (${John.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`
+  );
 }
-
-const bill = [125, 555, 44];
-
-const tips = [calcTip(bill[0]), calcTip(bill[1]), calcTip(bill[2])];
-
-const total = [(bill[0] + bill[1] + bill[2])];
-console.log(total);
-
