@@ -374,7 +374,6 @@ console.log(
 );
 
 console.log(jonas.getSummary());
-*/
 
 // Task to calculate and compare the BMI's of two people
 
@@ -413,3 +412,59 @@ if (mark.bmi > John.bmi) {
     `${John.fullName}'s BMI (${John.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`
   );
 }
+// ITERATION: THE FOR LOOP
+
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`lifting weights repitiion ${rep} 🏋️`);
+}
+
+const patrick = [
+  `Patrick`,
+  `Amune`,
+  2037 - 1999,
+  `Student`,
+  [`Noah`, `Tali`, `Shem`],
+  true,
+];
+
+const types = [];
+
+for (let i = 0; i < patrick.length; i++) {
+  console.log(patrick[i], typeof patrick[i]);
+
+  //types[i] = typeof patrick[i];
+  types.push(typeof patrick[i]);
+}
+// How to create a new array based on the values of an original array
+
+console.log(types);
+
+const years = [1999, 1992, 2002, 2010];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2025 - years[i]);
+}
+
+console.log(ages);
+
+// Continue and break
+
+// continue
+console.log(`--- ONLY STRINGS ---`);
+for (let i = 0; i < patrick.length; i++) {
+  if (typeof patrick[i] !== `string`) continue;
+  console.log(patrick[i], typeof patrick[i]);
+  types.push(typeof patrick[i]);
+}
+
+// break
+console.log(`--- BREAK WITH NUMBER ---`);
+for (let i = 0; i < patrick.length; i++) {
+  if (typeof patrick[i] === `number`) break;
+  console.log(patrick[i], typeof patrick[i]);
+  types.push(typeof patrick[i]);
+}
+*/
+
+// looping backwards and loops in loops:
