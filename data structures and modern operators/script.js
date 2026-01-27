@@ -42,7 +42,22 @@ const restaurant = {
       `here is your delcious pasta with ${ing1}, ${ing2} and ${ing3}`,
     );
   },
+
+  orderEwedu: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
 };
+
+//restaurant.numGuests = 0;
+////const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+////console.log(guests1);
+
+//const guests2 = restaurant.numGuests || 10;
+//console.log(guests2);
+
+//const guestCorrect = restaurant.numGuests ?? 10;
+//console.log(guestCorrect);
 
 //restaurant.orderDelivery({
 //  time: "22:30",
@@ -157,3 +172,174 @@ const restaurant = {
 
 // SPREAD OPERATOR WITH OBJECTS:
 //
+
+// 1.) DESTRUCTURING:
+
+//// SPREAD (RIGHT SIDE OF ASSIGNMENT OPERATOR "=")
+//const arr = [1, 2, ...[3, 4]];
+//console.log(arr);
+
+//// REST SYNTAX(LEFT HAND SIDE OF THE ASSIGNMENT OPERATOR "=")
+//const [a, b, ...others] = [1, 2, 3, 4, 5];
+//console.log(a, b, others);
+
+//// (...) on both sides
+//const [jollof, , fried, ...otherFoods] = [
+//  ...restaurant.mainMenu,
+//  ...restaurant.staterMenu,
+//];
+
+//console.log(jollof, fried, otherFoods);
+
+//// OBJECTS:
+//const { sat, ...weekdays } = restaurant.openingHours;
+
+//console.log(sat, weekdays);
+
+//// 2.) FUNCTIONS:
+//const add = function (...numbers) {
+//  let sum = 0;
+//  for (let i = 0; i < numbers.length; i++) {
+//    sum += numbers[i];
+//  }
+//  console.log(sum);
+//};
+
+//add(2, 3);
+//add(5, 3, 7, 2);
+//add(8, 2, 3, 4, 5, 4, 3, 3, 2);
+
+//const x = [23, 5, 7];
+//add(...x);
+
+//restaurant.orderEwedu("mushrooms", "onions", "olives", "spinach");
+
+//restaurant.orderEwedu("mushrooms");
+
+//console.log(`---- OR ----`);
+//console.log(3 || "Patrick");
+//console.log("" || "patrick");
+//console.log(true || 0);
+//console.log(undefined || null);
+
+//console.log(undefined || 0 || "" || "hello" || 23 || null);
+
+//console.log(`---- AND ----`);
+//console.log(0 && "patrick");
+//console.log(7 && "patrick");
+
+//console.log(`hello` && 23 && null && "patrick");
+
+//if (restaurant.orderEwedu) {
+//  restaurant.orderEwedu("mushrooms", "spinach");
+//}
+
+//restaurant.orderEwedu && restaurant.orderEwedu("mushrooms", "spinach");
+
+//const rest1 = {
+//  name: "capri",
+//  numGuests: 20,
+//};
+
+//const rest2 = {
+//  name: "capri",
+//  owner: "patrick",
+//};
+
+//// OR ASSIGNMENT OPERATOR:
+////rest1.numGuests = rest1.numGuests || 10;
+////rest2.numGuests = rest2.numGuests || 10;
+////rest1.numGuests ||= 10;
+////rest2.numGuests ||= 10;
+
+//// NULLISH ASSIGNMENT OPERATOR:
+//rest1.numGuests ??= 10;
+//rest2.numGuests ??= 10;
+
+////rest1.owner = rest1.owner && "<ANONYMOUS>";
+////rest2.owner = rest2.owner && "<ANONYMOUS>";
+
+//rest1.owner &&= "<ANONYMOUS>";
+//rest2.owner &&= "<ANONYMOUS>";
+
+//console.log(rest1);
+//console.log(rest2);
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// CREATING AN ARRAY FOR BOTH SETS OF PLAYERS: 1
+const [players1, players2] = game.players;
+console.log(players1, players2);
+
+// SPECIFYING GK AND OUTFIELD PLAYERS:
+const [Gk, ...fieldPLayers] = players1;
+console.log(Gk, fieldPLayers);
+
+const [Gk2, ...fieldPLayers2] = players2;
+console.log(Gk2, fieldPLayers2);
+
+// JOINING ALL PLAYERS ON THE PITCH:
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+// FINAL AMOUNT OF PLAYERS BAYERN USED:
+const bayernPlayersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
+console.log(bayernPlayersFinal);
+
+// VARIABLE FOR EACH TEAM BY ODDS:
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
+
+// FUNCTION FOR PRINTGOALS
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored`);
+  
+};
+printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
+printGoals("Davies", "Muller");
+printGoals(...game.scored);
+
+// TEAM LIKELY TO WIN:
+team1 < team2 && console.log('Team 1 is more likely to win');
+team2 < team1 && console.log("Team 1 is more likely to win");
