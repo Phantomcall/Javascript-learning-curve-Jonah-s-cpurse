@@ -1,5 +1,22 @@
 "use strict";
 
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[2 + 3]]: {
+    open: 0, // open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: "Africano Familiario",
   location: "No 12 algeria crescent barnawa, kaduna",
@@ -7,47 +24,60 @@ const restaurant = {
   staterMenu: ["Amala", "Ewedu", "Tuwo", "Banga"],
   mainMenu: ["Jollof", "Swallow", "Fried"],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // open 24 hours
-      close: 24,
-    },
-  },
+  // ES6 ENHANCED OBJECT LITERALS:
+  openingHours,
 
-  order: function (staterIndex, mainIndex) {
+  order(staterIndex, mainIndex) {
     return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery: function ({
-    staterIndex = 1,
-    mainIndex = 0,
-    time = "20:00",
-    address,
-  }) {
+  orderDelivery({ staterIndex = 1, mainIndex = 0, time = "20:00", address }) {
     console.log(
       `order recieved! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `here is your delcious pasta with ${ing1}, ${ing2} and ${ing3}`,
     );
   },
 
-  orderEwedu: function (mainIngredient, ...otherIngredient) {
+  orderEwedu(mainIngredient, ...otherIngredient) {
     console.log(mainIngredient);
     console.log(otherIngredient);
   },
 };
+
+//if (restaurant.openingHours && restaurant.openingHours.mon) {
+//  console.log(restaurant.openingHours.mon.open);
+//}
+
+// WITH OPTIONAL CHAINING:
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// REAL WORLD EXAMPLE WITH OPTIONAL CHAINING:
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? `on ${day} we are closed`;
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// OPTIONAL CHAINING FOR METHODS:
+console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
+
+// OPTIONAL CHAINING FOR ARRAYS:
+const users = [
+  {
+    name: `Patrick`,
+    email: `Pinzypatz@gmail.com`,
+  },
+];
+
+console.log(users[0]?.name ?? `User array empty`);
+
 
 //restaurant.numGuests = 0;
 ////const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
@@ -265,81 +295,94 @@ const restaurant = {
 //console.log(rest1);
 //console.log(rest2);
 
-const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
-  players: [
-    [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnarby",
-      "Lewandowski",
-    ],
-    [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
-    ],
-  ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+//const game = {
+//  team1: "Bayern Munich",
+//  team2: "Borrussia Dortmund",
+//  players: [
+//    [
+//      "Neuer",
+//      "Pavard",
+//      "Martinez",
+//      "Alaba",
+//      "Davies",
+//      "Kimmich",
+//      "Goretzka",
+//      "Coman",
+//      "Muller",
+//      "Gnarby",
+//      "Lewandowski",
+//    ],
+//    [
+//      "Burki",
+//      "Schulz",
+//      "Hummels",
+//      "Akanji",
+//      "Hakimi",
+//      "Weigl",
+//      "Witsel",
+//      "Hazard",
+//      "Brandt",
+//      "Sancho",
+//      "Gotze",
+//    ],
+//  ],
+//  score: "4:0",
+//  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+//  date: "Nov 9th, 2037",
+//  odds: {
+//    team1: 1.33,
+//    x: 3.25,
+//    team2: 6.5,
+//  },
+//};
 
 // CREATING AN ARRAY FOR BOTH SETS OF PLAYERS: 1
-const [players1, players2] = game.players;
-console.log(players1, players2);
+//const [players1, players2] = game.players;
+//console.log(players1, players2);
 
 // SPECIFYING GK AND OUTFIELD PLAYERS:
-const [Gk, ...fieldPLayers] = players1;
-console.log(Gk, fieldPLayers);
+//const [Gk, ...fieldPLayers] = players1;
+//console.log(Gk, fieldPLayers);
 
-const [Gk2, ...fieldPLayers2] = players2;
-console.log(Gk2, fieldPLayers2);
+//const [Gk2, ...fieldPLayers2] = players2;
+//console.log(Gk2, fieldPLayers2);
 
 // JOINING ALL PLAYERS ON THE PITCH:
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
+//const allPlayers = [...players1, ...players2];
+//console.log(allPlayers);
 
 // FINAL AMOUNT OF PLAYERS BAYERN USED:
-const bayernPlayersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
-console.log(bayernPlayersFinal);
+//const bayernPlayersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
+//console.log(bayernPlayersFinal);
 
 // VARIABLE FOR EACH TEAM BY ODDS:
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+//const {
+//  odds: { team1, x: draw, team2 },
+//} = game;
+//console.log(team1, draw, team2);
 
 // FUNCTION FOR PRINTGOALS
-const printGoals = function (...players) {
-  console.log(`${players.length} goals were scored`);
-  
-};
-printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
-printGoals("Davies", "Muller");
-printGoals(...game.scored);
+//const printGoals = function (...players) {
+//  console.log(`${players.length} goals were scored`);
+
+//};
+//printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
+//printGoals("Davies", "Muller");
+//printGoals(...game.scored);
 
 // TEAM LIKELY TO WIN:
-team1 < team2 && console.log('Team 1 is more likely to win');
-team2 < team1 && console.log("Team 1 is more likely to win");
+//team1 < team2 && console.log('Team 1 is more likely to win');
+//team2 < team1 && console.log("Team 1 is more likely to win");
+
+// LOOPING ARRAYS: THE FOR-OF LOOP:
+//const menu = [...restaurant.staterMenu, ...restaurant.mainMenu];
+
+//for (const item of menu) {
+//  console.log(item);
+//}
+
+//for (const [i, el] of menu.entries()) {
+//  console.log(`${i + 1}: ${el}`);
+//}
+
+// ENHANCED OBJECT LITERALS:
