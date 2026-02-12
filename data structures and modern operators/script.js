@@ -54,30 +54,62 @@ const restaurant = {
 //}
 
 // WITH OPTIONAL CHAINING:
-console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
+//console.log(restaurant.openingHours.mon?.open);
+//console.log(restaurant.openingHours?.mon?.open);
 
-// REAL WORLD EXAMPLE WITH OPTIONAL CHAINING:
-const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+//// REAL WORLD EXAMPLE WITH OPTIONAL CHAINING:
+//const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-for (const day of days) {
-  const open = restaurant.openingHours[day]?.open ?? `on ${day} we are closed`;
-  console.log(`On ${day}, we open at ${open}`);
-}
+//for (const day of days) {
+//  const open = restaurant.openingHours[day]?.open ?? `on ${day} we are closed`;
+//  console.log(`On ${day}, we open at ${open}`);
+//}
 
-// OPTIONAL CHAINING FOR METHODS:
-console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
+//// OPTIONAL CHAINING FOR METHODS:
+//console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
 
 // OPTIONAL CHAINING FOR ARRAYS:
-const users = [
-  {
-    name: `Patrick`,
-    email: `Pinzypatz@gmail.com`,
-  },
-];
+//const users = [
+//  {
+//    name: `Patrick`,
+//    email: `Pinzypatz@gmail.com`,
+//  },
+//];
 
-console.log(users[0]?.name ?? `User array empty`);
+//console.log(users[0]?.name ?? `User array empty`);
 
+// LOOPING OBJECTS: OBJECT KEYS, VALUES AND ENTRIES:
+
+//for (const day of Object.keys(openingHours)) {
+//  console.log(day);
+//}
+
+// PROPERTY NAMES:
+//const properties = Object.keys(openingHours);
+//console.log(properties);
+
+//let openStr = `We are open ${properties.length} days a week:`;
+//for (const days of properties) {
+//  openStr += ` ${days},`;
+//}
+//console.log(openStr);
+
+//// PROPERTY VALUES:
+//const values = Object.values(openingHours);
+//console.log(values);
+
+//// ENTIRE OBJECT USING ENTRIES
+//const entries = Object.entries(openingHours);
+//console.log(entries);
+
+//// KEY, VALUE:
+//for (const [keys, { open, close }] of entries) {
+//  console.log(`On ${keys} we open at ${open} and close at ${close}`);
+//}
+
+//for (const day of Object.keys(openingHours)) {
+//  console.log(day);
+//}
 
 //restaurant.numGuests = 0;
 ////const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
@@ -336,43 +368,73 @@ console.log(users[0]?.name ?? `User array empty`);
 //  },
 //};
 
-// CREATING AN ARRAY FOR BOTH SETS OF PLAYERS: 1
+//// CREATING AN ARRAY FOR BOTH SETS OF PLAYERS: 1
 //const [players1, players2] = game.players;
 //console.log(players1, players2);
 
-// SPECIFYING GK AND OUTFIELD PLAYERS:
+//// SPECIFYING GK AND OUTFIELD PLAYERS:
 //const [Gk, ...fieldPLayers] = players1;
 //console.log(Gk, fieldPLayers);
 
 //const [Gk2, ...fieldPLayers2] = players2;
 //console.log(Gk2, fieldPLayers2);
 
-// JOINING ALL PLAYERS ON THE PITCH:
+//// JOINING ALL PLAYERS ON THE PITCH:
 //const allPlayers = [...players1, ...players2];
 //console.log(allPlayers);
 
-// FINAL AMOUNT OF PLAYERS BAYERN USED:
+//// FINAL AMOUNT OF PLAYERS BAYERN USED:
 //const bayernPlayersFinal = [...players1, "Thiago", "Coutinho", "Perisic"];
 //console.log(bayernPlayersFinal);
 
-// VARIABLE FOR EACH TEAM BY ODDS:
+//// VARIABLE FOR EACH TEAM BY ODDS:
 //const {
 //  odds: { team1, x: draw, team2 },
 //} = game;
 //console.log(team1, draw, team2);
 
-// FUNCTION FOR PRINTGOALS
+//// FUNCTION FOR PRINTGOALS
 //const printGoals = function (...players) {
 //  console.log(`${players.length} goals were scored`);
-
 //};
 //printGoals("Davies", "Muller", "Lewandoski", "Kimmich");
 //printGoals("Davies", "Muller");
 //printGoals(...game.scored);
 
-// TEAM LIKELY TO WIN:
-//team1 < team2 && console.log('Team 1 is more likely to win');
+//// TEAM LIKELY TO WIN:
+//team1 < team2 && console.log("Team 1 is more likely to win");
 //team2 < team1 && console.log("Team 1 is more likely to win");
+
+//// LOOP TO LOG GOAL WITH NAME
+//for (const [i, x] of game.scored.entries()) {
+//  console.log(`goal ${i + 1}: ${x}`);
+//}
+
+//// LOOPING TO GET THE AVERAGE ODDS:
+//const entry = Object.values(game.odds);
+////console.log(entry);
+
+//let sum = 0;
+//for (const x of entry) {
+//  sum += x;
+//  //console.log(sum);
+//}
+
+//const oddAverage = sum / entry.length;
+//console.log(oddAverage);
+
+//// FORMAL ODD PRINTOUT:
+//for (const [team, odd] of Object.entries(game.odds)) {
+//  const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
+//  console.log(`Odd of ${teamStr} ${odd}`);
+//}
+
+//const good = Object.entries(game.odds);
+//console.log(good);
+
+//for (const x of Object.values(game.odds)) {
+//  console.log(x);
+//}
 
 // LOOPING ARRAYS: THE FOR-OF LOOP:
 //const menu = [...restaurant.staterMenu, ...restaurant.mainMenu];
@@ -386,3 +448,33 @@ console.log(users[0]?.name ?? `User array empty`);
 //}
 
 // ENHANCED OBJECT LITERALS:
+
+// SETS:
+const orderSet = new Set([
+  `pasta`,
+  `pizza`,
+  `pizza`,
+  `risotto`,
+  `pasta`,
+  `pizza`,
+]);
+
+console.log(orderSet);
+
+// Declaring a new set for a string:
+console.log(new Set(`patrick`));
+
+// Checking for size of set:
+console.log(orderSet.size);
+
+// Checking for a particular element in the set:
+console.log(orderSet.has(`pizza`));
+console.log(orderSet.has(`bread`));
+
+// Adding elements to the set:
+orderSet.add(`Garlic Bread`);
+orderSet.add(`Garlic Bread`);
+console.log(orderSet);
+
+// Deleting elements from the set:
+
