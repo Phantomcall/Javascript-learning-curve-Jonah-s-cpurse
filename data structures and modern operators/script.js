@@ -1,53 +1,53 @@
 "use strict";
 
-const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+//const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-const openingHours = {
-  [weekdays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  [weekdays[2 + 3]]: {
-    open: 0, // open 24 hours
-    close: 24,
-  },
-};
+//const openingHours = {
+//  [weekdays[3]]: {
+//    open: 12,
+//    close: 22,
+//  },
+//  [weekdays[4]]: {
+//    open: 11,
+//    close: 23,
+//  },
+//  [weekdays[2 + 3]]: {
+//    open: 0, // open 24 hours
+//    close: 24,
+//  },
+//};
 
-const restaurant = {
-  name: "Africano Familiario",
-  location: "No 12 algeria crescent barnawa, kaduna",
-  categories: ["Calabar", "Yoruba", "Hausa", "Edo"],
-  staterMenu: ["Amala", "Ewedu", "Tuwo", "Banga"],
-  mainMenu: ["Jollof", "Swallow", "Fried"],
+//const restaurant = {
+//  name: "Africano Familiario",
+//  location: "No 12 algeria crescent barnawa, kaduna",
+//  categories: ["Calabar", "Yoruba", "Hausa", "Edo"],
+//  staterMenu: ["Amala", "Ewedu", "Tuwo", "Banga"],
+//  mainMenu: ["Jollof", "Swallow", "Fried"],
 
-  // ES6 ENHANCED OBJECT LITERALS:
-  openingHours,
+//  // ES6 ENHANCED OBJECT LITERALS:
+//  openingHours,
 
-  order(staterIndex, mainIndex) {
-    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
-  },
+//  order(staterIndex, mainIndex) {
+//    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+//  },
 
-  orderDelivery({ staterIndex = 1, mainIndex = 0, time = "20:00", address }) {
-    console.log(
-      `order recieved! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
-    );
-  },
+//  orderDelivery({ staterIndex = 1, mainIndex = 0, time = "20:00", address }) {
+//    console.log(
+//      `order recieved! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
+//    );
+//  },
 
-  orderPasta(ing1, ing2, ing3) {
-    console.log(
-      `here is your delcious pasta with ${ing1}, ${ing2} and ${ing3}`,
-    );
-  },
+//  orderPasta(ing1, ing2, ing3) {
+//    console.log(
+//      `here is your delcious pasta with ${ing1}, ${ing2} and ${ing3}`,
+//    );
+//  },
 
-  orderEwedu(mainIngredient, ...otherIngredient) {
-    console.log(mainIngredient);
-    console.log(otherIngredient);
-  },
-};
+//  orderEwedu(mainIngredient, ...otherIngredient) {
+//    console.log(mainIngredient);
+//    console.log(otherIngredient);
+//  },
+//};
 
 //if (restaurant.openingHours && restaurant.openingHours.mon) {
 //  console.log(restaurant.openingHours.mon.open);
@@ -450,31 +450,141 @@ const restaurant = {
 // ENHANCED OBJECT LITERALS:
 
 // SETS:
-const orderSet = new Set([
-  `pasta`,
-  `pizza`,
-  `pizza`,
-  `risotto`,
-  `pasta`,
-  `pizza`,
-]);
+//const orderSet = new Set([
+//  `pasta`,
+//  `pizza`,
+//  `pizza`,
+//  `risotto`,
+//  `pasta`,
+//  `pizza`,
+//]);
 
-console.log(orderSet);
+//console.log(orderSet);
 
-// Declaring a new set for a string:
-console.log(new Set(`patrick`));
+//// Declaring a new set for a string:
+//console.log(new Set(`patrick`));
 
-// Checking for size of set:
-console.log(orderSet.size);
+//// Checking for size of set:
+//console.log(orderSet.size);
 
-// Checking for a particular element in the set:
-console.log(orderSet.has(`pizza`));
-console.log(orderSet.has(`bread`));
+//// Checking for a particular element in the set:
+//console.log(orderSet.has(`pizza`));
+//console.log(orderSet.has(`bread`));
 
-// Adding elements to the set:
-orderSet.add(`Garlic Bread`);
-orderSet.add(`Garlic Bread`);
-console.log(orderSet);
+//// Adding elements to the set:
+//orderSet.add(`Garlic Bread`);
+//orderSet.add(`Garlic Bread`);
+//console.log(orderSet);
 
-// Deleting elements from the set:
+//// Deleting elements from the set:
+//orderSet.delete(`risotto`);
 
+//// Deleting all elements in a set:
+////orderSet.clear();
+////console.log(orderSet);
+
+//// Looping over sets:
+//for (const order of orderSet) {
+//  console.log(order);
+//}
+
+//// Example:
+
+//const staff = [`waiter`, `chef`, `waiter`, `manager`, `chef`, `waiter`];
+
+//const staffUnique = [...new Set(staff)];
+//console.log(staffUnique);
+
+//console.log(
+//  new Set([`waiter`, `chef`, `waiter`, `manager`, `chef`, `waiter`]).size,
+//);
+
+//console.log(new Set(`PatrickAmune`).size);
+
+// NEW OPERATIONS TO MAKE SETS USEFUL:
+
+// 1. INTERSECTION METHOD:
+//const italianFoods = new Set([
+//  "pasta",
+//  "gnocchi",
+//  "tomatoes",
+//  "olive oil",
+//  "garlic",
+//  "basil",
+//]);
+
+//const mexicanFoods = new Set([
+//  "tortillas",
+//  "beans",
+//  "rice",
+//  "tomatoes",
+//  "avocado",
+//  "garlic",
+//]);
+
+//const commonFoods = italianFoods.intersection(mexicanFoods);
+//console.log(`Intersection:`, commonFoods);
+//console.log([...commonFoods]);
+
+//// 2. UNION METHOD:
+
+//const italianMexicanFusion = italianFoods.union(mexicanFoods);
+//console.log(`Union:`, italianMexicanFusion);
+
+//// SECOND UNION METHOD
+//console.log([...new Set([...italianFoods, ...mexicanFoods])]);
+
+//// DIFFERENCE METHOD:
+//const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+//console.log(`Difference Itailan:`, uniqueItalianFoods);
+
+//const uniqueMexicanFOods = mexicanFoods.difference(italianFoods);
+//console.log(`Difference Mexican:`, uniqueMexicanFOods);
+
+//// SYMMETRIC DIFFERENCE:
+//const uniqueItalianandMexicanFoods =
+//  italianFoods.symmetricDifference(mexicanFoods);
+//console.log([...uniqueItalianandMexicanFoods]);
+
+//// IsDisjoinFrom Method:
+//console.log(italianFoods.isSubsetOf(mexicanFoods));
+
+// MAPS FUNDAMENTALS:
+const rest = new Map();
+rest.set("name", "Iyawo-Rest");
+rest.set(1, "Kaduna, Nigeria");
+console.log(rest.set(2, "Nairobi, Kenya"));
+
+rest
+  .set("categories", ["Calabar", "Yoruba", "Hausa", "Edo"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, `we are open`)
+  .set(false, `we are closed`);
+
+console.log(rest.get("name"));
+console.log(rest.get(true));
+
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+// HAS METHOD:
+console.log(rest.has("categories"));
+
+// DELETE METHOD:
+rest.delete(2);
+console.log(rest);
+
+// SIZE METHOD:
+console.log(rest.size);
+
+
+console.log(rest);
+//console.log(rest.size);
+
+const arr = [1, 2]
+rest.set(arr, "test");
+
+rest.set(document.querySelector(`h1`), `Heading`)
+console.log(rest.get(arr));
+console.log(rest);
