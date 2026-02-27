@@ -690,10 +690,166 @@ const plane = `A320`;
 console.log(plane[0]);
 console.log(plane[1]);
 console.log(plane[2]);
-console.log('B737'[0]);
+console.log("B737"[0]);
 
 console.log(airline.length);
-console.log('B737'.length);
+console.log("B737".length);
 
-console.log(airline.indexOf('e'));
-console.log(airline.lastIndexOf('e'));
+console.log(airline.indexOf("e"));
+console.log(airline.lastIndexOf("e"));
+
+console.log(airline.indexOf("Nigeria"));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 9));
+
+console.log(airline.slice(0, airline.indexOf(" ")));
+
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+// FUNCTION THAT RECIEVES AIRPLANE SIT:
+const checkMiddleSeat = function (seat) {
+  // b and e are middle seats;
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") {
+    console.log(`You got the middle seat`);
+  } else {
+    console.log(`You got lucky`);
+  }
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+console.log(typeof new String("Patrick").slice());
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// fix capitalization in name
+const passenger = "PaTrIck";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// comparing email:
+const email = "hello@patrick.io";
+const loginEmail = "   Hello@PaTrick.io \n";
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+
+const normalisedEmail = loginEmail.toLowerCase().trim();
+console.log(normalisedEmail);
+console.log(email === normalisedEmail);
+
+// Replacing parts of a string:
+const priceGB = "288,97£";
+const priceUS = priceGB.replace("£", "$").replace(",", ".");
+console.log(priceUS);
+
+const announcement =
+  "All passengers come to boaring door 23, Boarding door 23!";
+
+console.log(announcement.replace("door", "gate"));
+//console.log(announcement.replaceAll("door", "gate"));
+
+// USING REGULAR EXPRESSION:
+console.log(announcement.replace(/door/g, "gate"));
+
+const plane1 = "Airbus A320neo";
+console.log(plane1.includes("A320"));
+console.log(plane1.includes("Boeing"));
+
+console.log(plane1.startsWith("Air"));
+
+if (plane1.startsWith("Airbus") && plane1.endsWith("neo")) {
+  console.log("Part of the new Airbus family");
+}
+
+// PRACTICE EXERCISE:
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are not allowed onboard");
+  } else {
+    console.log("Welcome aboard");
+  }
+};
+
+checkBaggage("I have a laptop, some Food and a pocket Knife");
+checkBaggage("I have some socks an a camera");
+checkBaggage("Got some snacks and a gun for protection");
+
+console.log(`a+very+nice+string`.split("+"));
+console.log("Patrick Amune".split(" "));
+
+const [firstName, lastName] = "Patrick Amune".split(" ");
+
+const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
+
+const capitaliseName = function (name) {
+  const names = name.split(" ");
+  console.log(names);
+
+  const namesUpper = [];
+
+  for (const n of names) {
+    //namesUpper.push(n[0].toUpperCase() + n.slice(1));
+
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+
+  console.log(namesUpper.join(" "));
+};
+
+capitaliseName("daniel egbon dariel odumodu");
+capitaliseName("patrick amune gabriel");
+
+// padding a string;
+const message = "Go to gate 23!";
+console.log(message.padStart(25, "+").padEnd(30, "+"));
+console.log("Patrick".padStart(20, "+").padEnd(25, "+"));
+
+const maskCreditCards = function (number) {
+  const string = number + "";
+  const last = string.slice(-4);
+  return last.padStart(string.length, "*");
+};
+
+console.log(maskCreditCards(43334556566899886));
+console.log(maskCreditCards("5566776655442134"));
+
+// REPEAT:
+const message3 = "Bad weather... All departures delayed ";
+console.log(message3.repeat(5));
+
+const planesInline = function (n) {
+  console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
+};
+
+planesInline(3);
+planesInline(5);
+planesInline(12);
+
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+const getcode = str => str.slice(0, 3).toUpperCase();
+
+for (const logs of flights.split("+")) {
+
+  const [type, from, to, time] = logs.split(";");
+  
+  const outPut = `${type.startsWith("_Delayed") ? "🔴" : ""}${type.replaceAll("_", " ")} from ${getcode(
+    from,
+  )} to ${getcode(to)} (${time.replace(":", "h")})`.padStart(50,);
+  console.log(outPut);
+
+}
